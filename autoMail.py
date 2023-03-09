@@ -8,14 +8,14 @@ senderName = str(input("Type your name: "))
 senderEmail = str(input("Type your email: "))
 senderPassword = str(input("Type your password: "))
 
-df = pd.read_excel(r'emailslist.xlsx path')
+df = pd.read_excel('C:/Users/55759/OneDrive/Área de Trabalho/Python/WorkSpacePy/Auto Mail/emailslist.xlsx')
 df_test = df.head(200)
 
 addresseeName = (df_test['Nome'].to_list())
 addresseeEmail = (df_test['Email'].to_list())
 
 i = 0
-checkPoint = []
+
 
 for list in addresseeEmail:
 
@@ -23,8 +23,6 @@ for list in addresseeEmail:
 
     fromP = addresseeEmail[i]
     nameP = addresseeName[i]
-
-    checkPoint.append((addresseeName[i], addresseeEmail[i]))
   
     #<p></p>
     email_body = f"""
@@ -50,19 +48,5 @@ for list in addresseeEmail:
     
     print('Email enviado')
 
-  def save_checkpoint(checkPoint):
-      with open('path where you want to save your checkpoint.pkl', 'wb') as f:
-          pickle.dump(checkPoint, f)
-
   send_email()
-  save_checkpoint(checkPoint)
-
-  i = i + 1
-
-def load_checkpoint():
-  with open('path where you saved your checkpoint.pkl', 'rb') as f:
-    safe_checkpoint = pickle.load(f)
-
-  print("Checkpoint Save List: ", safe_checkpoint)
-  
-load_checkpoint()  
+  i = i + 1 
